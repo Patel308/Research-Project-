@@ -155,10 +155,12 @@ def run(argv=None):
     parser.add_argument("--bq_dataset",    default="stream_benchmark")
     parser.add_argument("--temp_location", required=True)
     parser.add_argument("--staging_location", required=True)
-    parser.add_argument("--runner",        default="DataflowRunner")
+    # --runner handled by PipelineOptions directly
     known_args, pipeline_args = parser.parse_known_args(argv)
 
     options = PipelineOptions(pipeline_args)
+    options.view_as(StandardOptions).runner = "DataflowRunner"
+    options.view_as(StandardOptions).streaming = True
     options.view_as(StandardOptions).streaming = True
     options.view_as(SetupOptions).save_main_session = True
 

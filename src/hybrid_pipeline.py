@@ -174,6 +174,7 @@ class RefineRecord(beam.DoFn):
 # ─── Stream path ────────────────────────────────────────────────────────────
 def run_stream(args, pipeline_args):
     options = PipelineOptions(pipeline_args)
+    options.view_as(StandardOptions).runner = "DataflowRunner"
     options.view_as(StandardOptions).streaming = True
     options.view_as(SetupOptions).save_main_session = True
 
@@ -225,6 +226,7 @@ def run_refine(args, pipeline_args):
     refined records to a staging table and run a BQ MERGE via the API.
     """
     options = PipelineOptions(pipeline_args)
+    options.view_as(StandardOptions).runner = "DataflowRunner"
     options.view_as(SetupOptions).save_main_session = True
 
     gcp = options.view_as(GoogleCloudOptions)
@@ -300,7 +302,7 @@ def main():
     parser.add_argument("--gcs_bucket",       default=None)
     parser.add_argument("--temp_location",    required=True)
     parser.add_argument("--staging_location", required=True)
-    parser.add_argument("--runner",           default="DataflowRunner")
+    # --runner handled by PipelineOptions directly
     parser.add_argument("--subscription",     default=None)
 
     known_args, pipeline_args = parser.parse_known_args(argv_rest)

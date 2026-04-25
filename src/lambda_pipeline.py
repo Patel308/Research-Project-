@@ -153,6 +153,7 @@ class ComputeWindowMetrics(beam.DoFn):
 def run_stream(args, pipeline_args):
     """Streaming Dataflow job: Pub/Sub → BQ + archive raw to GCS."""
     options = PipelineOptions(pipeline_args)
+    options.view_as(StandardOptions).runner = "DataflowRunner"
     options.view_as(StandardOptions).streaming = True
     options.view_as(SetupOptions).save_main_session = True
 
@@ -266,6 +267,7 @@ class ComputeBatchMetrics(beam.DoFn):
 def run_batch(args, pipeline_args):
     """Batch Dataflow job: GCS archived JSONL → BQ."""
     options = PipelineOptions(pipeline_args)
+    options.view_as(StandardOptions).runner = "DataflowRunner"
     options.view_as(SetupOptions).save_main_session = True
 
     gcp = options.view_as(GoogleCloudOptions)
@@ -324,7 +326,7 @@ def main():
     parser.add_argument("--gcs_bucket",       required=True)
     parser.add_argument("--temp_location",    required=True)
     parser.add_argument("--staging_location", required=True)
-    parser.add_argument("--runner",           default="DataflowRunner")
+    # --runner handled by PipelineOptions directly
     # Stream-only args
     parser.add_argument("--subscription",     default=None)
 
