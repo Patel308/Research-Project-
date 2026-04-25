@@ -1,0 +1,85 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+.venv/
+ENV/
+
+# =========================
+# Logs & temp files
+# =========================
+*.log
+logs/
+tmp/
+temp/
+*.tmp
+
+# =========================
+# Jupyter Notebook
+# =========================
+.ipynb_checkpoints
+
+# =========================
+# Environment variables / secrets
+# =========================
+.env
+.env.*
+*.env
+
+# GCP credentials (IMPORTANT)
+*.json
+!setup_bigquery.sql   # allow SQL file
+
+# =========================
+# Build / distribution
+# =========================
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# =========================
+# IDE / Editor
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Testing / coverage
+# =========================
+.coverage
+coverage.xml
+htmlcov/
+
+# =========================
+# Data files (optional - if large datasets)
+# =========================
+data/
+*.csv
+*.parquet
+
+# =========================
+# Stream / pipeline outputs
+# =========================
+output/
+results/
+
+# =========================
+# Shell scripts logs
+# =========================
+*.out
+*.err
