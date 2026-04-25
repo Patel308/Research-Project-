@@ -174,14 +174,19 @@ def run_stream(args, pipeline_args):
 
         parsed = raw | "ParseJSON" >> beam.ParDo(ParsePubSubMessage())
 
-        # Archive raw JSON lines to GCS (for batch layer reprocessing)
+        # FIX: Archive raw JSON lines to GCS with proper windowing
+        # Streaming data is unbounded, so we must:
+        # 1. Apply a time window (60 sec)
+        # 2. Set triggering_frequency to flush files periodically
         (
             parsed
             | "SerializeRaw"  >> beam.Map(json.dumps)
+            | "WindowRaw"     >> beam.WindowInto(FixedWindows(WINDOW_SECONDS))
             | "ArchiveToGCS"  >> WriteToText(
                 f"gs://{args.gcs_bucket}/lambda-raw/events",
                 file_name_suffix=".jsonl",
                 num_shards=4,
+                triggering_frequency=WINDOW_SECONDS,  # Flush every 60 sec
             )
         )
 
