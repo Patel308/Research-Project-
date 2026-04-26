@@ -1,6 +1,6 @@
-# Stream Processing Architecture Benchmark on GCP
+# Design and Empirical Evaluation of Stream Processing Architectures on Google Cloud
 
-> **A comparative empirical study of Kappa, Lambda, and Hybrid stream processing architectures using Apache Beam + Google Cloud Dataflow**
+> **Design and Empirical Evaluation of Stream Processing Architectures on Google Cloud using Apache Beam + Cloud Dataflow**
 
 [![Python](https://img.shields.io/badge/Python-3.12-blue.svg)](https://python.org)
 [![Apache Beam](https://img.shields.io/badge/Apache%20Beam-2.56.0-orange.svg)](https://beam.apache.org)
@@ -813,9 +813,8 @@ If you use this benchmark in your research, please cite:
 
 ```bibtex
 @misc{patel2026streambenchmark,
-  title   = {Comparative Benchmark of Kappa, Lambda, and Hybrid Stream
-             Processing Architectures on Google Cloud Platform},
-  author  = {Patel, Deepesh and Kumar Prajapati, Deepanshu},
+  title   = {Design and Empirical Evaluation of Stream Processing Architectures on Google Cloud},
+  author  = {Patel, Deepesh and Prajapati, Deepanshu Kumar},
   year    = {2026},
   url     = {https://github.com/Patel308/Research-Project-},
   note    = {Apache Beam 2.56.0 on GCP Dataflow, 1.77M+ events processed}
