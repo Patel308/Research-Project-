@@ -797,8 +797,7 @@ Views:
 ## Authors
 
 - **Deepesh Patel** — Scallar IT Solutions | deepeshpatelinfinix@gmail.com
-- **Kamlesh Gupta** — Co-author
-- **Deepanshu Kumar** — Co-author
+- **Deepanshu Kumar Prajapati** — Co-author
 
 ---
 
@@ -816,7 +815,7 @@ If you use this benchmark in your research, please cite:
 @misc{patel2026streambenchmark,
   title   = {Comparative Benchmark of Kappa, Lambda, and Hybrid Stream
              Processing Architectures on Google Cloud Platform},
-  author  = {Patel, Deepesh and Gupta, Kamlesh and Kumar, Deepanshu},
+  author  = {Patel, Deepesh and Kumar Prajapati, Deepanshu},
   year    = {2026},
   url     = {https://github.com/Patel308/Research-Project-},
   note    = {Apache Beam 2.56.0 on GCP Dataflow, 1.77M+ events processed}
